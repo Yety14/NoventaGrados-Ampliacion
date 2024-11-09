@@ -16,45 +16,46 @@ import noventagrados.util.TipoPieza;
  */
 
 public class Pieza {
-	
+
 	/** Color de la pieza. */
 	private Color color;
-	
+
 	/** Tipo de la pieza. */
 	private TipoPieza tipoPieza;
-	
+
 	/**
-	 * Instancia una nueva pieza.
+	 * Construye una nueva pieza con el tipo y color especificados.
 	 *
 	 * @param tipoPieza el tipo de la pieza
+	 * @param color     el color de la pieza
 	 */
-	public Pieza (TipoPieza tipoPieza, Color color) {
+	public Pieza(TipoPieza tipoPieza, Color color) {
 		this.color = color;
 		this.tipoPieza = tipoPieza;
-		
+
 	}
-	
+
 	/**
-	 * Clona en profundida la pieza.
+	 * Crea y devuelve una copia profunda de la pieza.
 	 *
-	 * @return la pieza clonada
+	 * @return una nueva instancia de Pieza con las mismas propiedades que esta
 	 */
 	public Pieza clonar() {
 		Pieza nueva = new Pieza(this.tipoPieza, this.color);
 		return nueva;
 	}
-	
+
 	/**
-	 * Consultar color.
+	 * Consulta el color de la pieza.
 	 *
-	 * @return el color
+	 * @return el color de la pieza
 	 */
 	public Color consultarColor() {
 		return color;
 	}
-	
+
 	/**
-	 * Consultar tipo pieza.
+	 * Consulta el tipo de la pieza.
 	 *
 	 * @return el tipo de la pieza
 	 */
@@ -62,26 +63,44 @@ public class Pieza {
 		return tipoPieza;
 	}
 
+	/**
+	 * Genera un código hash para la pieza.
+	 *
+	 * @return el código hash basado en el color y tipo de la pieza
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(color, tipoPieza);
 	}
-	
+
+	/**
+	 * Compara esta pieza con otro objeto para determinar si son iguales. Dos piezas
+	 * son consideradas iguales si tienen el mismo color y tipo.
+	 *
+	 * @param obj el objeto a comparar con esta pieza
+	 * @return true si son iguales, false en caso contrario
+	 */
 	@Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Pieza other = (Pieza) obj;
-        return Objects.equals(color, other.color) && Objects.equals(tipoPieza, other.tipoPieza); // Añadir comparación de atributos
-    }
-	
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pieza other = (Pieza) obj;
+		return Objects.equals(color, other.color) && Objects.equals(tipoPieza, other.tipoPieza); // Añadir comparación
+																									// de atributos
+	}
+
+	/**
+	 * Devuelve una representación en cadena de la pieza.
+	 *
+	 * @return una cadena que describe la pieza, incluyendo su color y tipo
+	 */
 	@Override
 	public String toString() {
 		return "Pieza [color=" + color + ", tipoPieza=" + tipoPieza + "]";
 	}
-	
+
 }

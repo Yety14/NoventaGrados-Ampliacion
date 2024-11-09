@@ -22,7 +22,8 @@ import noventagrados.util.Coordenada;
  * invocaciones a métodos del árbitro.
  *
  * @author <a href="rmartico@ubu.es">Raúl Marticorena</a>
- * @author AÑADIR COAUTOR/A
+ * @author Víctor Vidal Vivanco
+ * @author Guillermo López de Arechavaleta Zapatero
  * @since 1.0
  * @version 1.0
  * @see noventagrados.modelo
@@ -59,47 +60,38 @@ public class NoventaGrados {
 	 * @param args argumentos de entrada en línea de comandos
 	 */
 	public static void main(String[] args) {
-	    mostrarMensajeBienvenida();    // Mensaje de bienvenida para el usuario.
-	    inicializarPartida();           // Inicialización de los componentes del juego.
+		mostrarMensajeBienvenida();
+		inicializarPartida();
 
-	    // Bucle principal de la partida.
-	    while (true) {
-	        mostrarTablero();           // Muestra el estado actual del tablero.
+		while (true) {
+			mostrarTablero();
 
-	        // Recoge la jugada del usuario y verifica si quiere salir.
-	        String jugadaTexto = recogerTextoDeJugadaPorTeclado();
-	        if (comprobarSalir(jugadaTexto)) {
-	            break;                  // Sale del bucle principal si el usuario escribe "salir".
-	        }
+			String jugadaTexto = recogerTextoDeJugadaPorTeclado();
+			if (comprobarSalir(jugadaTexto)) {
+				break;
+			}
+			if (comprobarFinalizacionPartida()) {
+				finalizarPartida();
+				mostrarGanador();
+				inicializarPartida();
+				continue;
+			}
+			if (!validarFormato(jugadaTexto)) {
+				mostrarErrorEnFormatoDeEntrada();
+				continue;
+			}
 
-	        // Verifica si la partida ha finalizado antes de continuar.
-	        if (comprobarFinalizacionPartida()) { 
-	            finalizarPartida();
-	            mostrarGanador();       // Muestra el ganador al finalizar la partida.
-	            inicializarPartida();    // Reinicia la partida.
-	            continue;               // Comienza una nueva partida.
-	        }
-
-	        // Valida el formato de la jugada ingresada.
-	        if (!validarFormato(jugadaTexto)) {
-	            mostrarErrorEnFormatoDeEntrada();  // Error si el formato de la jugada es incorrecto.
-	            continue;               // Pide al usuario que vuelva a introducir la jugada.
-	        }
-
-	        // Extrae y valida la jugada.
-	        Jugada jugada = extraerJugada(jugadaTexto);
-	        if (!esLegal(jugada)) {
-	            mostrarErrorPorMovimientoIlegal(jugadaTexto); // Muestra error si la jugada es ilegal.
-	            continue;               // Pide una nueva jugada.
-	        }
-
-	        // Ejecuta la jugada y actualiza el tablero.
-	        realizarEmpujón(jugada);
-	        cambiarTurnoPartida();       // Cambia el turno al siguiente jugador.
-	    }
-
-	    finalizarPartida();              // Cierra la partida de manera segura.
+			Jugada jugada = extraerJugada(jugadaTexto);
+			if (!esLegal(jugada)) {
+				mostrarErrorPorMovimientoIlegal(jugadaTexto);
+				continue;
+			}
+			realizarEmpujón(jugada);
+			cambiarTurnoPartida();
+		}
+		finalizarPartida();
 	}
+
 	/**
 	 * Inicializa el estado de los elementos de la partida.
 	 */
