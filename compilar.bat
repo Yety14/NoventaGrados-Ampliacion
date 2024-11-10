@@ -1,0 +1,1 @@
+javac -d bin src\noventagrados\textui\NoventaGrados.java
