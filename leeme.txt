@@ -1,2 +1,0 @@
-Los autores de el código adjunto en este trabajo de noventa grados han sido Víctor Vidal Vivanco y Guillermo López de Arechavaleta Zapatero.
-El código funciona tanto en el modo texto ejecutando el código Noventagrados.java como en modo gráfico ejecutando la librería correspondiente.
