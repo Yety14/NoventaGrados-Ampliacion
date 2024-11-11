@@ -2,8 +2,8 @@
 
 
 ## Autores:
-- Guillermo López de Arechavaleta Zapatero [aqui](https://github.com/Yety14)
-- Derick Daumienebi Sakpa [aqui](https://github.com/daumienebi)
+- [Guillermo López de Arechavaleta Zapatero](https://github.com/Yety14)
+- [Derick Daumienebi Sakpa](https://github.com/daumienebi)
 
 
 ## Descripción:
