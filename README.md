@@ -2,8 +2,8 @@
 
 
 ## Autores:
-- Víctor Vidal Vivanco
-- Guillermo López de Arechavaleta Zapatero
+- Guillermo López de Arechavaleta Zapatero [aqui](https://github.com/Yety14)
+- Derick Daumienebi Sakpa [aqui](https://github.com/daumienebi)
 
 
 ## Descripción:
