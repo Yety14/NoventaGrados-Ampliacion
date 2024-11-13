@@ -2,6 +2,7 @@ package noventagrados.control;
 
 import noventagrados.util.Color;
 import java.util.Arrays;
+
 import noventagrados.modelo.Pieza;
 import noventagrados.util.TipoPieza;
 

@@ -1,7 +1,6 @@
 package noventagrados.modelo;
 
 import noventagrados.util.Coordenada;
-
 import java.util.Arrays;
 
 /**
@@ -211,7 +210,6 @@ public class Tablero {
 	public int hashCode() {
 		return Arrays.deepHashCode(celdas);
 	}
-
 	/**
 	 * Devuelve una representación en cadena del tablero.
 	 * 
