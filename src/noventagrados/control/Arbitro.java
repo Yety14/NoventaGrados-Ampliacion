@@ -10,7 +10,7 @@ import noventagrados.modelo.Celda;
 import noventagrados.util.Sentido;
 
 /**
- * El arbitro del juego
+ * El arbitro del juego.
  * 
  * @author Víctor Vidal Vivanco
  * @author Guillermo López de Arechavaleta Zapatero

@@ -9,7 +9,7 @@ import noventagrados.util.TipoPieza;
 import noventagrados.modelo.Pieza;
 
 /**
- * El tablero consultor usado por el Arbitro
+ * El tablero consultor usado por el Arbitro.
  * 
  * @author Víctor Vidal Vivanco
  * @author Guillermo López de Arechavaleta Zapatero

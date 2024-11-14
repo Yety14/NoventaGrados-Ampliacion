@@ -7,6 +7,8 @@ import noventagrados.modelo.Celda;
 import noventagrados.modelo.Jugada;
 import noventagrados.modelo.Tablero;
 import noventagrados.util.Coordenada;
+import noventagrados.multijugador.Servidor;
+import noventagrados.multijugador.Cliente;
 
 /**
  * Noventa grados en modo texto.
@@ -60,6 +62,17 @@ public class NoventaGrados {
 	 * @param args argumentos de entrada en línea de comandos
 	 */
 	public static void main(String[] args) {
+		scanner = new Scanner(System.in);
+
+		System.out.println("¿Desea jugar en modo local o multijugador? (Escriba 'local' o 'multi')");
+		String modo = scanner.nextLine().trim().toLowerCase(); // Ahora no debería generar NullPointerException
+
+		if (modo.equals("multi")) {
+			iniciarServidorYClientes();
+			return; // salir de main para que no ejecute el modo local
+		}
+
+		// Modo local
 		mostrarMensajeBienvenida();
 		inicializarPartida();
 
@@ -293,4 +306,38 @@ public class NoventaGrados {
 			System.out.println("\nEmpate con ambas reinas empujadas fuera del tablero.");
 		}
 	}
+
+	private static void iniciarServidorYClientes() {
+    // Iniciar el servidor en un hilo separado
+    Thread servidorThread = new Thread(() -> {
+        Servidor servidor = new Servidor();
+        servidor.iniciar();  // Inicia el servidor que manejará la lógica del juego
+    });
+
+    servidorThread.start();
+
+    // Hacer que los clientes se conecten al servidor
+    // Esperar a que el servidor esté listo para aceptar conexiones
+
+    try {
+        // Espera un poco para asegurar que el servidor ha comenzado (esto puede mejorar con sincronización real)
+        Thread.sleep(1000); // Ajusta el tiempo de espera según lo necesario
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+
+    // Crear los clientes en hilos separados
+    Thread cliente1Thread = new Thread(() -> {
+        Cliente cliente1 = new Cliente();
+        cliente1.iniciar();  // El cliente 1 se conecta al servidor
+    });
+    cliente1Thread.start();
+
+    Thread cliente2Thread = new Thread(() -> {
+        Cliente cliente2 = new Cliente();
+        cliente2.iniciar();  // El cliente 2 se conecta al servidor
+    });
+    cliente2Thread.start();
+}
+
 }

@@ -7,7 +7,7 @@ import noventagrados.modelo.Pieza;
 import noventagrados.util.TipoPieza;
 
 /**
- * La caja para guardar las piezas eliminadas
+ * La caja para guardar las piezas eliminadas.
  * 
  * @author Víctor Vidal Vivanco
  * @author Guillermo López de Arechavaleta Zapatero
